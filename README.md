@@ -36,43 +36,86 @@ Model Context Protocol (MCP) servers extend Cursor's capabilities with external 
 
 #### Step 1: Create MCP Configuration File
 
-Create or edit `mcp.json` in your Cursor settings directory:
+**Option A: Use Repository Configuration** (Recommended)
+Copy the included `mcp.json` file from this repository to your Cursor settings directory:
 
 **Windows**: `%APPDATA%\Cursor\User\mcp.json`
 **macOS**: `~/Library/Application Support/Cursor/User/mcp.json`
 **Linux**: `~/.config/Cursor/User/mcp.json`
 
-#### Step 2: Basic MCP Server Configuration
+**Option B: Create Your Own**
+Create a new `mcp.json` file in the same location with your custom server configurations.
+
+#### Step 2: Repository MCP Configuration
+
+This repository includes a pre-configured `mcp.json` file with powerful MCP servers:
 
 ```json
 {
   "mcpServers": {
-    "postgres": {
+    "context7": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-postgres",
-        "postgresql://localhost/mydb"
-      ],
-      "env": {
-        "DB_USER": "your_username"
-      }
+      "args": ["-y", "@upstash/context7-mcp"]
     },
-    "filesystem": {
+    "sequential-thinking": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "/path/to/allowed/directory"
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "mcp-knowledge-graph", "--memory-path", "./memory.jsonl"],
+      "autoapprove": [
+        "create_entities",
+        "create_relations",
+        "add_observations",
+        "delete_entities",
+        "delete_observations",
+        "delete_relations",
+        "read_graph",
+        "search_nodes",
+        "open_nodes"
       ]
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "KEY_HERE"
+      }
     }
   }
 }
 ```
 
-#### Step 3: Popular MCP Servers
+#### Step 3: Server Descriptions
 
-##### Development Tools
+##### 🧠 **Context7** - Documentation and Library Access
+
+Access up-to-date documentation for popular libraries and frameworks directly in Cursor.
+
+##### 🤔 **Sequential Thinking** - Advanced Problem Solving
+
+Enables step-by-step reasoning and complex problem-solving workflows within Cursor.
+
+##### 💾 **Memory (Knowledge Graph)** - Persistent Context
+
+Maintains a knowledge graph of your project, remembering entities, relationships, and observations across sessions.
+
+##### 🌐 **Puppeteer** - Web Automation
+
+Automate web interactions, testing, and scraping directly from Cursor.
+
+##### 🔍 **Brave Search** - Real-time Web Search
+
+Perform web searches and get real-time information without leaving your editor.
+
+#### Step 4: Additional Popular Servers
+
+For additional functionality, you can extend the configuration:
 
 ```json
 {
@@ -84,41 +127,36 @@ Create or edit `mcp.json` in your Cursor settings directory:
         "GITHUB_PERSONAL_ACCESS_TOKEN": "your_token_here"
       }
     },
-    "stripe": {
-      "command": "npx",
-      "args": ["-y", "@stripe/mcp", "--tools=all"],
-      "env": {
-        "STRIPE_SECRET_KEY": "your_stripe_key"
-      }
-    }
-  }
-}
-```
-
-##### Remote Services
-
-```json
-{
-  "mcpServers": {
     "linear": {
       "url": "https://mcp.linear.app/sse"
     },
-    "figma": {
-      "url": "http://127.0.0.1:3845/sse"
-    },
-    "notion": {
-      "url": "https://mcp.notion.com/mcp"
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://localhost/mydb"
+      ]
     }
   }
 }
 ```
 
-#### Step 4: One-Click Installation Links
+#### Step 5: Quick Setup
 
-For quick MCP server installation, you can use these deep links:
+To use the repository's MCP configuration:
 
-- **PostgreSQL**: [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=postgres&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBtb2RlbGNvbnRleHRwcm90b2NvbC9zZXJ2ZXItcG9zdGdyZXMiLCJwb3N0Z3JlY3FsOi8vbG9jYWxob3N0L215ZGIiXX0=)
-- **GitHub Integration**: [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=github&config=eyJjb21tYW5kIjoiZG9ja2VyIiwgImFyZ3MiOlsicnVuIiwgIi1pIiwgIi0tcm0iLCAiLWUiLCAiR0lUSFVCX1BFUlNPTkFMX0FDQ0VTU19UT0tFTiJdfQ==)
+1. **Copy the `mcp.json` file** from this repository to your Cursor settings directory
+2. **Configure API Keys**: Update the `BRAVE_API_KEY` in the brave-search server configuration
+3. **Restart Cursor** to load the new MCP servers
+
+**One-Click Installation Links** (for individual servers):
+
+- **Context7**: [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=context7&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkB1cHN0YXNoL2NvbnRleHQ3LW1jcCJdfQ==)
+- **Sequential Thinking**: [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=sequential-thinking&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBtb2RlbGNvbnRleHRwcm90b2NvbC9zZXJ2ZXItc2VxdWVudGlhbC10aGlua2luZyJdfQ==)
+- **Memory**: [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=memory&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIm1jcC1rbm93bGVkZ2UtZ3JhcGgiLCItLW1lbW9yeS1wYXRoIiwiLi9tZW1vcnkuanNvbmwiXSwiYXV0b2FwcHJvdmUiOlsiY3JlYXRlX2VudGl0aWVzIiwiY3JlYXRlX3JlbGF0aW9ucyIsImFkZF9vYnNlcnZhdGlvbnMiLCJkZWxldGVfZW50aXRpZXMiLCJkZWxldGVfb2JzZXJ2YXRpb25zIiwiZGVsZXRlX3JlbGF0aW9ucyIsInJlYWRfZ3JhcGgiLCJzZWFyY2hfbm9kZXMiLCJvcGVuX25vZGVzIl19)
+- **Puppeteer**: [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=puppeteer&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBtb2RlbGNvbnRleHRwcm90b2NvbC9zZXJ2ZXItcHVwcGV0ZWVyIl19)
+- **Brave Search**: [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=brave-search&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBtb2RlbGNvbnRleHRwcm90b2NvbC9zZXJ2ZXItYnJhdmUtc2VhcmNoIl0sImVudiI6eyJCUkFWRV9BUElfS0VZIjoiS0VZX0hFUkUifX0=)
 
 ### Advanced Configuration
 

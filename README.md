@@ -113,6 +113,8 @@ Automate web interactions, testing, and scraping directly from Cursor.
 
 Perform web searches and get real-time information without leaving your editor.
 
+> **Note**: Requires a Brave Search API key. See the [API Key Setup](#brave-search-api-key-setup) section below for instructions.
+
 #### Step 4: Additional Popular Servers
 
 For additional functionality, you can extend the configuration:
@@ -195,6 +197,64 @@ node_modules/
 .env
 config.json
 ```
+
+### Brave Search API Key Setup
+
+The Brave Search MCP server requires an API key to function. Here's how to get yours:
+
+#### Step 1: Create Account
+
+1. Visit [api-dashboard.search.brave.com/register](https://api-dashboard.search.brave.com/register)
+2. Sign up for a new account or login if you already have one
+3. Complete the registration process
+
+#### Step 2: Choose a Plan
+
+Brave Search API offers several pricing tiers:
+
+- **Free Tier**: 2,000 queries per month (perfect for personal projects)
+- **Paid Plans**: Starting from $3 per 1,000 queries for higher usage
+- **Data for AI Plans**: Specialized plans for AI training and development
+
+#### Step 3: Subscribe to Data for AI Plan
+
+For MCP server usage, you need a "Data for AI" plan:
+
+1. In the dashboard, navigate to the **Subscriptions** tab in the left menu
+2. Select one of the **"Data for AI"** plans
+3. Complete the subscription process
+
+> **💡 Tip**: The free tier (2,000 queries/month) is often sufficient for development and personal use.
+
+#### Step 4: Generate API Key
+
+1. In the dashboard, go to **API Keys** in the left menu
+2. Click **"Add API Key"** to generate a new key
+3. Copy the generated API key
+4. Add it to your `mcp.json` configuration:
+
+```json
+{
+  "mcpServers": {
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "your_actual_api_key_here"
+      }
+    }
+  }
+}
+```
+
+#### Security Best Practices
+
+- Never commit API keys to version control
+- Store keys in environment variables when possible
+- Regenerate keys if they may have been compromised
+- Monitor your usage in the Brave dashboard
+
+For more information, visit the [official Brave Search API documentation](https://brave.com/search/api/).
 
 ## 📋 Rule Categories
 

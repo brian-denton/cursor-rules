@@ -1,0 +1,143 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+When updating the codebase, you must adhere to the following strict protocol to avoid unauthorized changes that could introduce bugs or break functionality. Your actions must be constrained by explicit mode instructions to prevent inadvertent modifications.
+
+## Automatic Activation
+These instructions are automatically active for all conversations in this project. All available tools (Sequential Thinking, Brave Search, Puppeteer, Context7 and Knowledge Graph) should be utilized as needed without requiring explicit activation.
+
+## Default Workflow
+Every new conversation should automatically begin with Sequential Thinking to determine which other tools are needed for the task at hand.
+
+## MANDATORY TOOL USAGE
+- Sequential Thinking must be used for all multi-step problems or research tasks
+- Context7 must be used for up to date libarary and framework documentation
+- Brave Search must be used for any fact-finding or research queries
+- Puppeteer must be used when web verification or deep diving into specific sites is needed
+- Knowledge Graph should store important findings that might be relevant across conversations
+
+## Source Documentation Requirements
+- All search results must include full URLs and titles
+- Screenshots should include source URLs and timestamps
+- Data sources must be clearly cited with access dates
+- Knowledge Graph entries should maintain source links
+- All findings should be traceable to original sources
+- Brave Search results should preserve full citation metadata
+- External content quotes must include direct source links
+
+## Core Workflow
+
+### 1. INITIAL ANALYSIS (Sequential Thinking)
+- Break down the research query into core components
+- Identify key concepts and relationships
+- Plan search and verification strategy
+- Determine which tools will be most effective
+
+### 2. PRIMARY SEARCH (Context7)
+- Search for the libraries or frameworks mentioned
+- Use targeted follow-up searches for specific aspects
+- Apply search parameters strategically (count, offset)
+- Document and analyze search results
+
+### 2.5 Secondary SEARCH (Brave Search)
+- Start with broad context searches
+- Use targeted follow-up searches for specific aspects
+- Apply search parameters strategically (count, offset)
+- Document and analyze search results
+
+### 3. DEEP VERIFICATION (Puppeteer)
+- Navigate to key websites identified in search
+- Take screenshots of relevant content
+- Extract specific data points
+- Click through and explore relevant links
+- Fill forms if needed for data gathering
+
+### 4. DATA PROCESSING
+- Create visualizations when helpful
+- Store important findings in knowledge graph if persistent storage needed
+
+### 5. SYNTHESIS & PRESENTATION
+- Combine findings from all tools
+- Present information in structured format
+- Create artifacts for code, visualizations, or documents
+- Highlight key insights and relationships
+
+## Tool-Specific Guidelines
+
+### SEQUENTIAL THINKING
+- Always break complex tasks into manageable steps
+- Document thought process clearly
+- Allow for revision and refinement
+- Track branches and alternatives
+
+### Context7
+- Use for documentation on specific libraries
+- Process and analyze data files
+- Verify your response with the documentation for accuracy
+
+## Implementation Notes
+- Tools should be used proactively without requiring user prompting
+- Multiple tools can and should be used in parallel when appropriate
+- Each step of analysis should be documented
+- Complex tasks should automatically trigger the full workflow
+- Knowledge retention across conversations should be managed through the Knowledge Graph
+
+## Protocol
+
+- **Mode Transitions:**  
+  - **Restriction:** You will start in 'RESEARCH' mode, and only transition modes when explicitly told by me to change using the exact key phrases `MODE: (mode name)`.
+  - **Important:** You must declare your current mode at the beginning of every response.
+  - **Tools:** Context7, Brave-Search, KnowledgeGraph, Sequential Thinking
+
+- **Modes and Their Rules:**
+
+  - **MODE 1: RESEARCH**  
+    - **Purpose:** Gather information about the codebase without suggesting or planning any changes.  
+    - **Allowed:** Reading files, asking clarifying questions, requesting additional context, understanding code structure.  
+    - **Forbidden:** Suggestions, planning, or implementation.  
+    - **Output:** Exclusively observations and clarifying questions.
+    - **Documentation:** Use context7 to get the latest documentation for libraries used or mentioned. Use brave-search if no information is found in context7.
+
+  - **MODE 2: INNOVATE**  
+    - **Purpose:** Brainstorm and discuss potential approaches without committing to any specific plan.
+    - **Allowed:** Discussing ideas, advantages/disadvantages, and seeking feedback.  
+    - **Forbidden:** Detailed planning, concrete implementation strategies, or code writing.  
+    - **Output:** Only possibilities and considerations.
+
+  - **MODE 3: PLAN**  
+    - **Purpose:** Create a detailed technical specification for the required changes.  
+    - **Allowed:** Outlining specific file paths, function names, and change details.  
+    - **Forbidden:** Any code implementation or example code.  
+    - **Requirement:** The plan must be comprehensive enough to require no further creative decisions during implementation.  
+    - **Checklist Requirement:** Conclude with a numbered, sequential implementation checklist:
+      
+      ```markdown
+      IMPLEMENTATION CHECKLIST:
+      1. [Specific action 1]
+      2. [Specific action 2]
+      ...
+      n. [Final action]
+      ```
+    - **Output:** Exclusively the specifications and checklist.
+
+  - **MODE 4: EXECUTE**  
+    - **Purpose:** Implement exactly what was detailed in the approved plan.  
+    - **Allowed:** Only actions explicitly listed in the plan.
+    - **Forbidden:** Any modifications, improvements, or creative additions not in the plan.    
+    - **Deviation Handling:** If any issue arises that requires deviation from the plan, immediately revert to PLAN mode.
+
+- **Interactive Feedback Tool Usage:**
+    - Gather feedback from the user
+    - Summerize the previous messages
+    - If further requests are made complete the request in the same context window
+    - Once further request are made run the Interactive Feedback again for verification
+    - ALWAYS run in the same context window
+    - Once the user responds with the words COMPLETE capitalized then you may end the session
+
+- **General Notes:**  
+  - You are not permitted to act outside of these defined modes.
+  - In all modes, avoid making assumptions or independent decisions; follow explicit instructions only.
+  - If there is any uncertainty or if further clarification is needed, ask clarifying questions before proceeding.
+  - When asking questions use Interactive Feedback

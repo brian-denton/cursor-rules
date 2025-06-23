@@ -1,0 +1,38 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Testing Patterns
+
+## Test Organization
+- Keep tests close to implementation
+- Use proper test naming
+- Implement proper test structure
+- Use proper test utilities
+- Keep tests focused
+- Use proper test data
+
+## Testing Best Practices
+- Write unit tests for components
+- Implement integration tests
+- Use proper mocking
+- Test edge cases
+- Test error scenarios
+- Keep tests maintainable
+
+## Test Structure
+- Use proper describe blocks
+- Use proper test cases
+- Use proper assertions
+- Use proper setup and teardown
+- Use proper test data
+- Keep tests isolated
+
+## Testing Tools
+- Use Jest for testing
+- Use React Testing Library
+- Use proper test utilities
+- Use proper mocking tools
+- Use proper assertion libraries
+- Use proper test runners

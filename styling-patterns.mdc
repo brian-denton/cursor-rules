@@ -1,0 +1,40 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Styling Patterns
+
+## Tailwind CSS
+- Use proper utility classes
+- Implement proper responsive design
+- Use proper dark mode
+- Use proper custom utilities
+- Keep styles consistent
+- Use proper theme configuration
+
+## Component Styling
+- Use proper class organization
+- Implement proper responsive styles
+- Use proper state styles
+- Keep styles maintainable
+- Use proper naming conventions
+- Keep styles focused
+
+## Best Practices
+- Use proper color system
+- Implement proper spacing
+- Use proper typography
+- Keep styles DRY
+- Use proper animations
+- Keep accessibility in mind
+
+## File Organization
+- Keep styles close to components
+- Use proper file naming
+- Implement proper imports
+- Use proper exports
+- Keep styles organized
+- Use proper structure
+
+

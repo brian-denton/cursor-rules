@@ -1,0 +1,39 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# TypeScript and React Patterns
+
+## Component Structure
+- Use functional components with TypeScript
+- Define proper prop interfaces
+- Use proper type annotations
+- Implement proper error handling
+- Use proper state management
+- Keep components focused and small
+
+## TypeScript Best Practices
+- Use strict TypeScript configuration
+- Define proper interfaces and types
+- Use proper type guards
+- Implement proper error types
+- Use proper generics
+- NEVER use `any` prefer `unknown` or generic types
+
+## React Patterns
+- Use proper hooks
+- Implement proper state management
+- Use proper context
+- Implement proper error boundaries
+- Use proper memoization
+- Keep components pure
+- Avoid using `useEffect` when possible
+
+## File Organization
+- Keep related code together
+- Use proper file naming
+- Implement proper exports
+- Use proper imports
+- Keep types close to usage
+- Use proper barrel exports

@@ -1,0 +1,14 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Testing Setup Guide
+
+This project uses two main testing frameworks:
+
+- **Jest**: For unit and integration tests. Configuration is in [`jest.config.cjs`](mdc:jest.config.cjs). Custom setup files are in [`jest.setup.js`](mdc:jest.setup.js).
+- Tests are run with the command `npx jest`
+- ALWAYS fix failing tests automatically
+
+Test files are typically located in `__tests__` directories or alongside the code they test. See [`TESTING.md`](mdc:TESTING.md) for more details and best practices.

@@ -1,0 +1,173 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+You will execute a comprehensive, safety-first code refactoring process using a structured methodology that preserves functionality while improving code quality. This protocol ensures systematic analysis, incremental implementation, and continuous user oversight.
+
+### Phase Structure
+You must progress through phases sequentially, obtaining explicit user approval before advancing. Each phase has specific deliverables and constraints.
+
+---
+
+## PHASE 1: ASSESSMENT
+**Purpose:** Analyze the target code to identify refactoring opportunities and establish baseline understanding.
+
+**Process:**
+1. **Code Analysis Checklist:**
+   - Document current functionality and expected behavior
+   - Identify code smells using established patterns (Long Method, Large Class, Duplicate Code, Feature Envy, Data Clumps, Primitive Obsession, etc.)
+   - Assess cyclomatic complexity and coupling/cohesion metrics
+   - Map dependencies and external interfaces
+   - Review existing tests and coverage
+
+2. **Risk Assessment:**
+   - **HIGH RISK:** Changes affecting public APIs, core business logic, or external integrations
+   - **MEDIUM RISK:** Internal method restructuring, variable renaming, or class reorganization  
+   - **LOW RISK:** Code formatting, comment improvements, or minor variable scope adjustments
+
+3. **Refactoring Opportunity Matrix:**
+   ```
+   PRIORITY | CODE SMELL | COMPLEXITY | RISK LEVEL | ESTIMATED EFFORT
+   High     | [Issue]    | [1-5]      | [H/M/L]    | [Time estimate]
+   ```
+
+**Deliverable:** Comprehensive assessment report with prioritized refactoring opportunities and risk analysis.
+
+**Constraint:** NO code changes permitted in this phase. Analysis only.
+
+---
+
+## PHASE 2: PLANNING
+**Purpose:** Create detailed implementation roadmap with specific steps and validation criteria.
+
+**Process:**
+1. **Scope Definition:**
+   - Select specific refactoring targets based on user priorities
+   - Define success criteria for each selected improvement
+   - Establish functional preservation requirements
+   - Identify required test cases for validation
+
+2. **Research:**
+    - Use context7 to get the latest documentation on libraries involved
+    - Use brave-search to search the web for related information
+    - Summerize your findings
+
+3. **Implementation Sequence:**
+   - Order changes from lowest to highest risk
+   - Define atomic change units (single refactoring per commit)
+   - Establish rollback points and undo strategies
+   - Plan validation steps for each change
+
+4. **Change Specification:**
+   For each planned refactoring:
+   ```markdown
+   **Refactoring:** [Name/Type]
+   **Target:** [Specific code location]
+   **Method:** [Specific refactoring technique]
+   **Expected Outcome:** [Measurable improvement]
+   **Validation:** [How success will be verified]
+   **Rollback:** [Undo procedure if needed]
+   ```
+
+**Deliverable:** Detailed implementation plan with sequenced steps and validation criteria.
+
+**Constraint:** NO code changes permitted. Planning only.
+
+---
+
+## PHASE 3: INCREMENTAL EXECUTION
+**Purpose:** Implement planned refactoring through carefully controlled, incremental changes.
+
+**Process Rules:**
+- **Single Change Principle:** Implement only ONE refactoring at a time
+- **Validation Requirement:** Verify functionality after each change before proceeding
+- **User Checkpoint:** Request approval after every 3 changes or before high-risk modifications
+- **Documentation Mandate:** Document rationale and impact for each change
+
+**Per-Change Protocol:**
+1. **Pre-Implementation:**
+   - State the specific change being made
+   - Confirm it matches the approved plan
+   - Identify validation method
+
+2. **Implementation:**
+   - Make the minimal necessary code change
+   - Preserve all existing functionality
+   - Maintain consistent code style
+   - Add appropriate comments/documentation
+
+3. **Post-Implementation:**
+   - Verify the change compiles/runs without errors
+   - Confirm existing tests still pass
+   - Document the completed change
+   - Present before/after comparison
+
+4. **Validation Checkpoint:**
+   - Summarize what was changed and why
+   - Confirm functionality preservation
+   - Use the Interactive Feedback to gather feedback from the user, if the user does not respond with COMPLETE then the task is not complete.
+
+**Emergency Protocol:**
+If ANY unexpected behavior occurs:
+- **STOP immediately**
+- Document the issue
+- Propose rollback to last known good state
+- Request user guidance before proceeding
+
+---
+
+## PHASE 4: VALIDATION & DOCUMENTATION
+**Purpose:** Comprehensive verification of refactoring success and complete documentation.
+
+**Process:**
+1. **Comprehensive Testing:**
+   - Run complete test suite
+   - Verify all original functionality preserved
+   - Test edge cases and error conditions
+   - Performance comparison (if applicable)
+
+2. **Quality Metrics:**
+   - Measure complexity reduction
+   - Assess maintainability improvements
+   - Verify adherence to coding standards
+   - Document technical debt reduction
+
+3. **Final Documentation:**
+   - Refactoring summary with rationale
+   - Before/after code comparisons
+   - Impact assessment and benefits realized
+   - Recommendations for future improvements
+
+**Deliverable:** Complete refactoring report with validation results and comprehensive documentation.
+
+---
+
+## Core Constraints
+
+**Functional Preservation:**
+- NEVER modify intended behavior unless explicitly requested
+- ALL existing tests must continue passing
+- External interfaces must remain unchanged
+- Error handling behavior must be preserved
+
+**User Authority:**
+- Request approval before implementing high-risk changes
+- Stop and ask for guidance when encountering unexpected issues
+- Allow user to modify scope or priorities at any checkpoint
+- Provide clear options when multiple refactoring approaches exist
+
+**Quality Standards:**
+- Follow established refactoring patterns (Martin Fowler's catalog)
+- Maintain or improve code readability
+- Reduce complexity without increasing coupling
+- Add documentation for non-obvious changes
+
+**Safety Protocols:**
+- Always have rollback plan before implementing changes
+- Make atomic changes that can be easily reverted
+- Test functionality after each significant modification
+- Document all assumptions and decisions
+
+
+Begin with PHASE 1: ASSESSMENT. Clearly state your current phase at the start of each response and obtain explicit user approval before advancing phases.
